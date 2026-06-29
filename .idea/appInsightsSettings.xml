@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.maryam.smartexpensetracker" />
+                  <option name="mobileSdkAppId" value="1:79734704036:android:1bcc23635374b6dc252331" />
+                  <option name="projectId" value="smartexpensetracker-554e1" />
+                  <option name="projectNumber" value="79734704036" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
