@@ -15,31 +15,62 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartExpenseTracker">
 
-        <activity
-            android:name=".activities.SplashActivity"
+        <activity android:name=".activities.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.SmartExpenseTracker.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activities.LoginActivity"
+        <activity android:name=".activities.LoginActivity"
             android:exported="false"
-            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar" />
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
 
-        <activity
-            android:name=".activities.SignupActivity"
+        <activity android:name=".activities.SignupActivity"
             android:exported="false"
-            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar" />
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
 
-        <activity
-            android:name=".activities.MainActivity"
+        <activity android:name=".activities.MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar" />
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
+
+        <activity android:name=".activities.AddExpenseActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
+
+        <activity android:name=".activities.ExpenseHistoryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
+
+        <activity android:name=".activities.ExpenseDetailsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
+
+        <activity android:name=".activities.BudgetPlannerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
+
+        <activity android:name=".activities.AnalyticsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
+
+        <activity android:name=".activities.ChartsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
+
+        <activity android:name=".activities.AISuggestionsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
+
+        <activity android:name=".activities.ReportsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
+
+        <activity android:name=".activities.ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartExpenseTracker.NoActionBar"/>
 
     </application>
-
 </manifest>
