@@ -67,4 +67,18 @@ public class AuthRepository {
     public void logout() {
         firebaseAuth.signOut();
     }
+
+    public void deleteAccount(MutableLiveData<Resource<String>> result) {
+        result.setValue(Resource.loading());
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user != null) {
+            user.delete()
+                    .addOnSuccessListener(unused ->
+                            result.setValue(Resource.success("Account deleted successfully")))
+                    .addOnFailureListener(e ->
+                            result.setValue(Resource.error(e.getMessage())));
+        } else {
+            result.setValue(Resource.error("No user logged in"));
+        }
+    }
 }

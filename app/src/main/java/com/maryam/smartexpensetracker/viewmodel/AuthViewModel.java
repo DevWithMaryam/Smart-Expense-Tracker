@@ -36,4 +36,9 @@ public class AuthViewModel extends ViewModel {
     public void logout() {
         authRepository.logout();
     }
+    public MutableLiveData<Resource<String>> deleteAccountResult = new MutableLiveData<>();
+
+    public void deleteAccount() {
+        authRepository.deleteAccount(deleteAccountResult);
+    }
 }
