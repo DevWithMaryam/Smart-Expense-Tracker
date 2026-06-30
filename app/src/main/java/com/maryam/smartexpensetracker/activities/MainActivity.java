@@ -12,6 +12,7 @@ import com.maryam.smartexpensetracker.viewmodel.ExpenseViewModel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import com.maryam.smartexpensetracker.notifications.WorkManagerScheduler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         observeDashboardData();
+        WorkManagerScheduler.scheduleDailyReminder(this);
+        WorkManagerScheduler.scheduleBudgetWarningCheck(this, userId);
+        WorkManagerScheduler.scheduleMonthlyReportReminder(this);
+
         setupClickListeners();
     }
 

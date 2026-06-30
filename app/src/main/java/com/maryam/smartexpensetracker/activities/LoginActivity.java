@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.maryam.smartexpensetracker.R;
 import com.maryam.smartexpensetracker.databinding.ActivityLoginBinding;
 import com.maryam.smartexpensetracker.viewmodel.AuthViewModel;
@@ -28,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
         setupClickListeners();
         observeViewModel();
+        requestNotificationPermission();
     }
 
     private void setupClickListeners() {
@@ -122,5 +122,15 @@ public class LoginActivity extends AppCompatActivity {
                     break;
             }
         });
+    }
+
+    private void requestNotificationPermission() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            if (androidx.core.content.ContextCompat.checkSelfPermission(this,
+                    android.Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                androidx.core.app.ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 100);
+            }
+        }
     }
 }
