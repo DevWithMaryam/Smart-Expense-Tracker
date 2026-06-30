@@ -1,17 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Expense Screen"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            app:title="Charts"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@drawable/ic_back"
+            app:navigationIconTint="@color/white"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@color/primary"
+                app:tabSelectedTextColor="@color/primary"
+                app:tabTextColor="@color/text_secondary">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pie Chart"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bar Chart"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Line Chart"/>
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="@color/card_background">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:padding="12dp">
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/pieChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"/>
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lineChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"/>
+
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvChartNoData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No expense data available to display charts"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"
+                android:gravity="center"
+                android:padding="32dp"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
