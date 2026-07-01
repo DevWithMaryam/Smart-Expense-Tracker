@@ -19,3 +19,20 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep Firebase classes
+-keep class com.google.firebase.** { *; }
+-keep class com.google.android.gms.** { *; }
+
+# Keep Room Database classes
+-keep class com.maryam.smartexpensetracker.model.** { *; }
+-keep class com.maryam.smartexpensetracker.dao.** { *; }
+
+# Keep Retrofit/OkHttp
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class retrofit2.** { *; }
+-keep class okhttp3.** { *; }
+
+# Keep Gemini request/response models
+-keep class com.maryam.smartexpensetracker.network.** { *; }

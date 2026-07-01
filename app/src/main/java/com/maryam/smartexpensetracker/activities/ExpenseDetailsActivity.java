@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.maryam.smartexpensetracker.R;
 import com.maryam.smartexpensetracker.databinding.ActivityExpenseDetailsBinding;
 import com.maryam.smartexpensetracker.model.Expense;
+import com.maryam.smartexpensetracker.utils.Constants;
 import com.maryam.smartexpensetracker.viewmodel.ExpenseViewModel;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -46,8 +47,7 @@ public class ExpenseDetailsActivity extends AppCompatActivity {
     }
 
     private void loadExpenseData() {
-        int expenseId = getIntent().getIntExtra("expense_id", -1);
-        if (expenseId == -1) {
+        int expenseId = getIntent().getIntExtra(Constants.KEY_EXPENSE_ID, -1);        if (expenseId == -1) {
             finish();
             return;
         }

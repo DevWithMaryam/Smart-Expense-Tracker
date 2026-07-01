@@ -11,6 +11,7 @@ import android.view.View;
 import com.maryam.smartexpensetracker.adapter.ExpenseAdapter;
 import com.maryam.smartexpensetracker.databinding.ActivityExpenseHistoryBinding;
 import com.maryam.smartexpensetracker.model.Expense;
+import com.maryam.smartexpensetracker.utils.Constants;
 import com.maryam.smartexpensetracker.viewmodel.AuthViewModel;
 import com.maryam.smartexpensetracker.viewmodel.ExpenseViewModel;
 import java.util.ArrayList;
@@ -44,8 +45,7 @@ public class ExpenseHistoryActivity extends AppCompatActivity {
     private void setupRecyclerView() {
         adapter = new ExpenseAdapter(expense -> {
             Intent intent = new Intent(this, ExpenseDetailsActivity.class);
-            intent.putExtra("expense_id", expense.getId());
-            startActivity(intent);
+            intent.putExtra(Constants.KEY_EXPENSE_ID, expense.getId());            startActivity(intent);
         });
         binding.rvExpenses.setLayoutManager(new LinearLayoutManager(this));
         binding.rvExpenses.setAdapter(adapter);

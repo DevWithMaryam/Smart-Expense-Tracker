@@ -4,15 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import com.google.firebase.auth.FirebaseUser;
+import com.maryam.smartexpensetracker.R;
 import com.maryam.smartexpensetracker.databinding.ActivityMainBinding;
+import com.maryam.smartexpensetracker.notifications.WorkManagerScheduler;
 import com.maryam.smartexpensetracker.viewmodel.AuthViewModel;
 import com.maryam.smartexpensetracker.viewmodel.BudgetViewModel;
 import com.maryam.smartexpensetracker.viewmodel.ExpenseViewModel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import com.maryam.smartexpensetracker.notifications.WorkManagerScheduler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,11 +56,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         observeDashboardData();
+        setupClickListeners();
+
         WorkManagerScheduler.scheduleDailyReminder(this);
         WorkManagerScheduler.scheduleBudgetWarningCheck(this, userId);
         WorkManagerScheduler.scheduleMonthlyReportReminder(this);
 
-        setupClickListeners();
+        animateDashboardCards();
     }
 
     private void observeDashboardData() {
@@ -98,5 +103,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, ReportsActivity.class)));
         binding.cardProfile.setOnClickListener(v ->
                 startActivity(new Intent(this, ProfileActivity.class)));
+    }
+
+    private void animateDashboardCards() {
+        Animation slideUp = AnimationUtils.loadAnimation(this, R.anim.slide_up);
+        Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+
+        binding.cardTodayExpense.startAnimation(fadeIn);
+        binding.cardMonthlyExpense.startAnimation(fadeIn);
+        binding.cardRemainingBudget.startAnimation(slideUp);
+        binding.cardAddExpense.startAnimation(slideUp);
+        binding.cardExpenseHistory.startAnimation(slideUp);
+        binding.cardBudgetPlanner.startAnimation(slideUp);
+        binding.cardAnalytics.startAnimation(slideUp);
+        binding.cardCharts.startAnimation(slideUp);
+        binding.cardAiSuggestions.startAnimation(slideUp);
+        binding.cardReports.startAnimation(slideUp);
+        binding.cardProfile.startAnimation(slideUp);
     }
 }

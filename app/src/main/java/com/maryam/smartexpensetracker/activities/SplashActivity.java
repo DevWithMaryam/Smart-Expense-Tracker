@@ -7,20 +7,32 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import com.maryam.smartexpensetracker.R;
+import com.maryam.smartexpensetracker.databinding.ActivitySplashBinding;
 import com.maryam.smartexpensetracker.viewmodel.AuthViewModel;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
+    private ActivitySplashBinding binding;
     private AuthViewModel authViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        binding = ActivitySplashBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+
+        Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        Animation slideUp = AnimationUtils.loadAnimation(this, R.anim.slide_up);
+
+        binding.ivLogo.startAnimation(fadeIn);
+        binding.tvAppName.startAnimation(slideUp);
+        binding.tvTagline.startAnimation(slideUp);
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             if (authViewModel.getCurrentUser() != null) {
@@ -29,6 +41,6 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
             }
             finish();
-        }, 2000);
+        }, 2500);
     }
 }

@@ -8,6 +8,9 @@ import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
+
+import com.maryam.smartexpensetracker.utils.Constants;
+
 import java.util.concurrent.TimeUnit;
 
 public class WorkManagerScheduler {
@@ -19,8 +22,7 @@ public class WorkManagerScheduler {
                 .build();
 
         WorkManager.getInstance(context).enqueueUniquePeriodicWork(
-                "daily_reminder",
-                ExistingPeriodicWorkPolicy.KEEP,
+                Constants.WORK_DAILY_REMINDER,                ExistingPeriodicWorkPolicy.KEEP,
                 dailyRequest
         );
     }
@@ -36,7 +38,7 @@ public class WorkManagerScheduler {
                 .build();
 
         WorkManager.getInstance(context).enqueueUniquePeriodicWork(
-                "budget_warning_check",
+                Constants.WORK_BUDGET_WARNING,
                 ExistingPeriodicWorkPolicy.KEEP,
                 budgetCheckRequest
         );
@@ -48,7 +50,7 @@ public class WorkManagerScheduler {
                 .build();
 
         WorkManager.getInstance(context).enqueueUniquePeriodicWork(
-                "monthly_report_reminder",
+                Constants.WORK_MONTHLY_REPORT,
                 ExistingPeriodicWorkPolicy.KEEP,
                 monthlyRequest
         );

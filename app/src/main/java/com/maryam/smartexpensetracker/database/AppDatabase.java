@@ -8,6 +8,7 @@ import com.maryam.smartexpensetracker.dao.BudgetDAO;
 import com.maryam.smartexpensetracker.dao.ExpenseDAO;
 import com.maryam.smartexpensetracker.model.Budget;
 import com.maryam.smartexpensetracker.model.Expense;
+import com.maryam.smartexpensetracker.utils.Constants;
 
 @Database(entities = {Expense.class, Budget.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
@@ -24,8 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(
                             context.getApplicationContext(),
                             AppDatabase.class,
-                            "smart_expense_tracker_db"
-                    ).fallbackToDestructiveMigration().build();
+                            Constants.DATABASE_NAME                    ).fallbackToDestructiveMigration().build();
                 }
             }
         }
