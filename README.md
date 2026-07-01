@@ -202,7 +202,7 @@ GEMINI_API_KEY=your_api_key_here
 Android Developer
 
 - GitHub: [DevWithMaryam](https://github.com/DevWithMaryam)
-- LinkedIn: [Add your LinkedIn URL]
+- LinkedIn: [https://www.linkedin.com/in/maryam-akram-2b183b338/]
 
 ---
 
