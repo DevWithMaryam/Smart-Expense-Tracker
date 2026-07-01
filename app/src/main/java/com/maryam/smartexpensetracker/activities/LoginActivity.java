@@ -11,6 +11,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.maryam.smartexpensetracker.R;
 import com.maryam.smartexpensetracker.databinding.ActivityLoginBinding;
 import com.maryam.smartexpensetracker.viewmodel.AuthViewModel;
+import com.maryam.smartexpensetracker.utils.NetworkUtils;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,8 +33,21 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setupClickListeners() {
         binding.btnLogin.setOnClickListener(v -> {
+            if (!NetworkUtils.isInternetAvailable(this)) {
+                Toast.makeText(this, "No internet connection. Please check your network.", Toast.LENGTH_LONG).show();
+                return;
+            }
             String email = binding.etEmail.getText().toString().trim();
             String password = binding.etPassword.getText().toString().trim();
+            if (validateInputs(email, password)) {
+                authViewModel.login(email, password);
+            }
+        });
+        binding.btnLogin.setOnClickListener(v -> {
+            String email = binding.etEmail.getText().toString().trim();
+            String password = binding.etPassword.getText().toString().trim();
+
+
 
             if (validateInputs(email, password)) {
                 authViewModel.login(email, password);

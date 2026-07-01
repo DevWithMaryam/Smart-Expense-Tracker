@@ -77,12 +77,22 @@ public class AddExpenseActivity extends AppCompatActivity {
 
             if (!validateInputs(title, amountStr, category)) return;
 
-            double amount = Double.parseDouble(amountStr);
-            Expense expense = new Expense(title, amount, category, selectedDate, notes, userId);
-            expenseViewModel.insertExpense(expense);
+            try {
+                double amount = Double.parseDouble(amountStr);
+                if (amount <= 0) {
+                    binding.tilAmount.setError("Amount must be greater than 0");
+                    return;
+                }
 
-            Toast.makeText(this, "Expense added successfully!", Toast.LENGTH_SHORT).show();
-            finish();
+                Expense expense = new Expense(title, amount, category, selectedDate, notes, userId);
+                expenseViewModel.insertExpense(expense);
+
+                Toast.makeText(this, "✅ Expense added successfully!", Toast.LENGTH_SHORT).show();
+                finish();
+
+            } catch (NumberFormatException e) {
+                binding.tilAmount.setError("Please enter a valid number");
+            }
         });
     }
 

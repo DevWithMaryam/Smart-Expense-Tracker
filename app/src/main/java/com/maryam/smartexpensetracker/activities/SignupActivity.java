@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 import com.maryam.smartexpensetracker.databinding.ActivitySignupBinding;
 import com.maryam.smartexpensetracker.viewmodel.AuthViewModel;
+import com.maryam.smartexpensetracker.utils.NetworkUtils;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -27,7 +28,13 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void setupClickListeners() {
+
         binding.btnSignup.setOnClickListener(v -> {
+                if (!NetworkUtils.isInternetAvailable(this)) {
+                    Toast.makeText(this, "No internet connection. Please check your network.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
             String fullName = binding.etFullName.getText().toString().trim();
             String email = binding.etEmail.getText().toString().trim();
             String password = binding.etPassword.getText().toString().trim();
