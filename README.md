@@ -40,7 +40,7 @@ Try the app directly in your browser — no installation needed!
 
 | Login | Dashboard | Add Expense |
 |-------|-----------|-------------|
-| ![login](screenshots/login.png) | ![dashboard](screenshots/dashboard.png) | ![add](screenshots/add%20expense.png) |
+| ![login](screenshots/login.png) | ![dashboard](screenshots/dashboard.png) | ![add](screenshots/add_expense.png) |
 | Analytics | Charts | AI Suggestions |
 |-----------|--------|----------------|
 | ![analytics](screenshots/analytics.png) | ![charts](screenshots/charts.png) | ![ai](screenshots/ai.png) |
