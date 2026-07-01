@@ -14,8 +14,13 @@
 ## Overview
 
 Smart Expense Tracker helps users take control of their personal finances through an intuitive mobile experience. The app works fully offline and uses Gemini AI to analyse spending patterns and suggest personalised improvements.
+## Live Demo
 
+Try the app directly in your browser — no installation needed!
+
+[![Run on Appetize](https://img.shields.io/badge/▶%20Run%20on-Appetize.io-green?style=for-the-badge)](https://appetize.io/app/b_ol2gppam44l3iup3panfhmszve)
 ---
+
 
 ## Features
 
