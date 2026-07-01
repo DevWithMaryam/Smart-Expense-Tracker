@@ -13,7 +13,7 @@
 
 ## Overview
 
-Smart Expense Tracker helps users take control of their personal finances through an intuitive mobile experience. The app works fully offline and uses Gemini AI to analyse spending patterns and suggest improvements.
+Smart Expense Tracker helps users take control of their personal finances through an intuitive mobile experience. The app works fully offline and uses Gemini AI to analyse spending patterns and suggest personalised improvements.
 
 ---
 
@@ -23,17 +23,15 @@ Smart Expense Tracker helps users take control of their personal finances throug
 - **Budget Planner** — Set a monthly budget and track remaining balance with a visual progress bar
 - **Analytics** — Daily average, weekly total, monthly total and category-wise breakdown
 - **Visual Charts** — Pie, Bar and Line charts powered by MPAndroidChart
-- **AI Spending Insights** — Gemini AI analyses your expenses and returns personalised saving tips and budget advice
+- **AI Spending Insights** — Gemini AI analyses expenses and returns personalised saving tips and budget advice
 - **PDF Reports** — Generate and share a monthly expense report as a PDF file
-- **Smart Notifications** — Daily expense reminders, budget warnings at 90% usage, and monthly report alerts via WorkManager
+- **Smart Notifications** — Daily expense reminders, budget warnings at 90% usage, and monthly report alerts
 - **Offline First** — All expense and budget data stored locally using Room Database
 - **Secure Auth** — Firebase email/password authentication with email verification
 
 ---
 
 ## Screenshots
-
-> Add your app screenshots here
 
 | Login | Dashboard | Add Expense |
 |-------|-----------|-------------|
@@ -45,6 +43,21 @@ Smart Expense Tracker helps users take control of their personal finances throug
 
 ---
 
+## Architecture
+
+![Architecture Diagram](screenshots/architecture.svg)
+
+The app follows **MVVM (Model-View-ViewModel)** architecture with a Repository pattern to separate concerns cleanly across four layers.
+
+```
+UI Layer  →  ViewModel Layer  →  Repository Layer  →  Data Layer
+                                                      ├── Room Database (offline)
+                                                      ├── Firebase Authentication
+                                                      └── Gemini 2.0 API (AI)
+```
+
+---
+
 ## Tech Stack
 
 | Technology | Purpose |
@@ -53,26 +66,13 @@ Smart Expense Tracker helps users take control of their personal finances throug
 | XML + Material Design 3 | UI layouts and components |
 | MVVM + Repository Pattern | Architecture |
 | Room Database | Local offline storage |
-| Firebase Authentication | User login, signup and verification |
+| Firebase Authentication | User login, signup and email verification |
 | Gemini 2.0 Flash API | AI spending analysis |
 | Retrofit + OkHttp | Network layer for Gemini API |
 | MPAndroidChart | Pie, Bar and Line charts |
 | WorkManager | Background notification scheduling |
 | ViewBinding | Type-safe view references |
 | LiveData | Reactive UI updates |
-
----
-
-## Architecture
-
-The app follows MVVM (Model-View-ViewModel) architecture with a Repository pattern to separate concerns across layers.
-
-```
-UI Layer  →  ViewModel Layer  →  Repository Layer  →  Data Layer
-                                                      ├── Room Database
-                                                      ├── Firebase Auth
-                                                      └── Gemini API
-```
 
 ---
 
@@ -95,31 +95,6 @@ com.maryam.smartexpensetracker
 
 ---
 
-## Database Schema
-
-**Expense table**
-
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INTEGER (PK) | Auto-generated |
-| title | TEXT | Expense title |
-| amount | REAL | Expense amount |
-| category | TEXT | Food, Transport, Shopping, etc. |
-| date | TEXT | yyyy-MM-dd |
-| notes | TEXT | Optional notes |
-| userId | TEXT | Firebase UID |
-
-**Budget table**
-
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INTEGER (PK) | Auto-generated |
-| budgetAmount | REAL | Monthly budget |
-| month | TEXT | yyyy-MM |
-| userId | TEXT | Firebase UID |
-
----
-
 ## Getting Started
 
 ### Prerequisites
@@ -132,32 +107,32 @@ com.maryam.smartexpensetracker
 
 ### Setup
 
-1. Clone the repository
+**1. Clone the repository**
 
 ```bash
-git clone https://github.com/DevWithMaryam/smart-expense-tracker.git
-cd smart-expense-tracker
+git clone https://github.com/DevWithMaryam/Smart-Expense-Tracker.git
+cd Smart-Expense-Tracker
 ```
 
-2. Add Firebase configuration
+**2. Add Firebase configuration**
 
-   - Create a project at [Firebase Console](https://console.firebase.google.com)
-   - Enable Email/Password Authentication
-   - Download `google-services.json` and place it in the `app/` folder
+- Create a project at [Firebase Console](https://console.firebase.google.com)
+- Enable Email/Password Authentication
+- Download `google-services.json` and place it in the `app/` folder
 
-3. Add your Gemini API key
+**3. Add your Gemini API key**
 
-   Create or open `local.properties` in the project root and add:
+Create or open `local.properties` in the project root and add:
 
-   ```properties
-   GEMINI_API_KEY=your_api_key_here
-   ```
+```properties
+GEMINI_API_KEY=your_api_key_here
+```
 
-4. Sync and run
+**4. Sync and run**
 
-   - Open the project in Android Studio
-   - Click **Sync Now** when prompted
-   - Run on a device or emulator
+- Open the project in Android Studio
+- Click **Sync Now** when prompted
+- Run on a device or emulator
 
 ---
 
@@ -181,6 +156,31 @@ cd smart-expense-tracker
 
 ---
 
+## Database Schema
+
+**Expense table**
+
+| Column | Type | Description |
+|--------|------|-------------|
+| id | INTEGER PK | Auto-generated |
+| title | TEXT | Expense title |
+| amount | REAL | Expense amount |
+| category | TEXT | Food, Transport, Shopping etc. |
+| date | TEXT | yyyy-MM-dd |
+| notes | TEXT | Optional notes |
+| userId | TEXT | Firebase UID |
+
+**Budget table**
+
+| Column | Type | Description |
+|--------|------|-------------|
+| id | INTEGER PK | Auto-generated |
+| budgetAmount | REAL | Monthly budget amount |
+| month | TEXT | yyyy-MM |
+| userId | TEXT | Firebase UID |
+
+---
+
 ## Notifications
 
 | Type | Condition | Frequency |
@@ -193,7 +193,7 @@ cd smart-expense-tracker
 
 ## Developer
 
-**Maryam**  
+**Maryam**
 Android Developer
 
 - GitHub: [DevWithMaryam](https://github.com/DevWithMaryam)
